@@ -39,7 +39,6 @@ export default class Management {
     }
 
     this.client = new PrismaClient({
-      debug: process.env.verbose == 'true',
       ...this.options,
     })
 
