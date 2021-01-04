@@ -36,7 +36,7 @@ class Studio implements Command {
     try {
       const schemaPath = args.options.schema || (await getSchemaPath())
       await runDistantPrisma(
-        `studio --port ${port} --schema ${schemaPath} ${args.secondary} --experimental`,
+        `studio --port ${port} --schema ${schemaPath} ${args.secondary} --preview-feature`,
         tenant,
         false
       )

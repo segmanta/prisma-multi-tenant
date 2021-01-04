@@ -163,7 +163,7 @@ class Migrate implements Command {
   ) {
     schemaPath = schemaPath || (await getSchemaPath())
     return runDistantPrisma(
-      `migrate ${action} ${migrateArgs} --schema ${schemaPath} ${prismaArgs} --experimental`,
+      `migrate ${action} ${migrateArgs} --schema ${schemaPath} ${prismaArgs} --preview-feature`,
       tenant
     )
   }
@@ -187,7 +187,7 @@ class Migrate implements Command {
     schemaPath = schemaPath || (await getSchemaPath())
 
     const retCode = await spawnShell(
-      `npx @prisma/cli migrate save ${migrateArgs} --schema ${schemaPath} ${prismaArgs} --experimental`
+      `npx @prisma/cli migrate save ${migrateArgs} --schema ${schemaPath} ${prismaArgs} --preview-feature`
     )
 
     if (retCode === 1) {
@@ -196,7 +196,7 @@ class Migrate implements Command {
         console.log('This is probably a bug with npm. Retrying...')
       }
       return spawnShell(
-        `prisma migrate save ${migrateArgs} --schema ${schemaPath} ${prismaArgs} --experimental`
+        `prisma migrate save ${migrateArgs} --schema ${schemaPath} ${prismaArgs} --preview-feature`
       )
     }
 
